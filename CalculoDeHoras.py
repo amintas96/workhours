@@ -17,7 +17,10 @@ def CalculaHoraDeSair(horarios1, totalHorasTrabalhadas):
 
 def calculoDeHorasDia(horarios1):     
     totalTrabalhados = horarios1[1] - horarios1[0]
-    totalTrabalhados += horarios1[3] - horarios1[2]
+    try: 
+        totalTrabalhados += horarios1[3] - horarios1[2]
+    except:
+        pass
     if len(horarios1) > 5:
         totalTrabalhados += horarios1[5] - horarios1[4]    
     return totalTrabalhados
@@ -37,6 +40,8 @@ def convertListToDict(listas):
         elif "DSR" in valor:
             lista_dia_horas.append(valor.strip())
         elif "Compensação Dia" in valor:
+            lista_dia_horas.append(valor.strip())       
+        elif "Atestado (Dias)" in valor:
             lista_dia_horas.append(valor.strip())
         elif "Férias" in valor:
             lista_dia_horas.append(valor.strip())
@@ -47,7 +52,7 @@ def convertListToDict(listas):
 
 def calculaHorasDict(discHours):
     discHours2 = {i: calculoDeHorasDia(entradadeDados(k)) for i , k in discHours.items() 
-                  if k != "Feriado" if k != "Folga" if k != "DSR" if k != "Compensação Dia" if k != "Férias"}
+                  if k != "Feriado" if k != "Folga" if k != "DSR" if k != "Compensação Dia" if k != "Férias" if k != 'Atestado (Dias)'}
     return discHours2
 
 def converteDTToStr(entrada):

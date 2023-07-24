@@ -17,8 +17,9 @@ dictWorker = {'Data': listDates,
 
 
 
-dictWorker = pd.DataFrame(dictWorker)
+dictWorker = pd.DataFrame(dictWorker).to_string()
 
 
 arquivo = open('HorasTrabalhadas.txt', 'w') 
-arquivo.write(dictWorker.to_string())
+
+arquivo.write(dictWorker)

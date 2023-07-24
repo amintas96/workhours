@@ -17,7 +17,7 @@ def extrairPdf(entrada):
     discHours = ch.convertListToDict(listHours)
     # discHours = {i: k for i, k in  discHours.items()}
     
-    disc_hour = {i: k for i , k in discHours.items() if k != "Feriado" if k != "Folga" if k != "DSR" if k != "Compensação Dia" if k != "Férias"}
+    disc_hour = {i: k for i , k in discHours.items() if k != "Feriado" if k != "Folga" if k != "DSR" if k != "Compensação Dia" if k != "Férias"if k != "Atestado (Dias)"}
 
     return disc_hour
 
